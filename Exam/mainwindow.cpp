@@ -7,7 +7,7 @@
 #include<QJsonParseError>
 #include<QJsonArray>
 #include<QJsonDocument>
-
+#include<QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -52,14 +52,13 @@ MainWindow::MainWindow(QWidget *parent) :
             for(int i = 0; i < choiceQuestion.count(); i++) {
                 QJsonValue value = choiceQuestion.at(i);
                 QListWidgetItem *nitem = new QListWidgetItem(ui->listWidget_choice);
-                nitem->setSizeHint(QSize(0,177));
+                nitem->setSizeHint(QSize(0,153));
                 ui->listWidget_choice->addItem(nitem);
                 CustomItem* custItem = new CustomItem();
                 custItem->setTitle(value["编号"].toString().toInt(), value["编号"].toString() + "、" + value["题目"].toString());
                 custItem->setCheckBoxA("A：" + value["选项A"].toString());
                 custItem->setCheckBoxB("B：" + value["选项B"].toString());
                 custItem->setCheckBoxC("C：" + value["选项C"].toString());
-                custItem->setCheckBoxD("D：" + value["选项D"].toString());
                 ui->listWidget_choice->setItemWidget(nitem, custItem);
                 this->vect_choiceItem.append(custItem);
             }
@@ -95,6 +94,36 @@ MainWindow::~MainWindow()
 // 点击交卷按钮
 void MainWindow::on_pushButton_clicked()
 {
+    if (ui->lineEdit_name->text().length() <= 0) {
+        QMessageBox msg;
+        msg.setWindowTitle(tr("提示"));
+        msg.setText("请填写正确的姓名");
+        msg.setStyleSheet("font: 14pt;background-color:rgb(220, 0, 0)");
+        msg.setIcon(QMessageBox::Critical);
+        msg.addButton(tr("确定"),QMessageBox::ActionRole);
+        msg.exec();
+        return;
+    }
+    if (ui->lineEdit_id->text().length() <= 0) {
+        QMessageBox msg;
+        msg.setWindowTitle(tr("提示"));
+        msg.setText("请填写正确的身份证号码");
+        msg.setStyleSheet("font: 14pt;background-color:rgb(220, 0, 0)");
+        msg.setIcon(QMessageBox::Critical);
+        msg.addButton(tr("确定"),QMessageBox::ActionRole);
+        msg.exec();
+        return;
+    }
+    if (ui->lineEdit_phone->text().length() != 11) {
+        QMessageBox msg;
+        msg.setWindowTitle(tr("提示"));
+        msg.setText("请填写正确的手机号码");
+        msg.setStyleSheet("font: 14pt;background-color:rgb(220, 0, 0)");
+        msg.setIcon(QMessageBox::Critical);
+        msg.addButton(tr("确定"),QMessageBox::ActionRole);
+        msg.exec();
+        return;
+    }
     qDebug() << "获取选择题的结果";
     QVector<CustomItem*>::iterator iterChoice;
     for (iterChoice=this->vect_choiceItem.begin(); iterChoice!=this->vect_choiceItem.end(); iterChoice++)
@@ -108,4 +137,7 @@ void MainWindow::on_pushButton_clicked()
     {
         qDebug() << ((CheckingQuestionItem*)(*iterCheck))->getResult();
     }
+
+    // 设置交卷按钮不可用
+    ui->pushButton->setEnabled(0);
 }

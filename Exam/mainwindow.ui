@@ -34,7 +34,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit"/>
+                <widget class="QLineEdit" name="lineEdit_name"/>
                </item>
               </layout>
              </item>
@@ -48,7 +48,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_2"/>
+                <widget class="QLineEdit" name="lineEdit_id"/>
                </item>
               </layout>
              </item>
@@ -62,7 +62,14 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_3"/>
+                <widget class="QLineEdit" name="lineEdit_phone">
+                 <property name="inputMethodHints">
+                  <set>Qt::ImhNone</set>
+                 </property>
+                 <property name="maxLength">
+                  <number>11</number>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>

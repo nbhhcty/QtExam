@@ -15,7 +15,7 @@ CustomItem::~CustomItem()
 }
 
 QVector<bool> CustomItem::getResult() {
-    QVector<bool> vect(4);
+    QVector<bool> vect(3);
     if(ui->checkBox_A->checkState() == Qt::Checked) {
         vect[0] = true;
     }
@@ -24,9 +24,6 @@ QVector<bool> CustomItem::getResult() {
     }
     if (ui->checkBox_C->checkState() == Qt::Checked) {
         vect[2] = true;
-    }
-    if (ui->checkBox_D->checkState() == Qt::Checked) {
-        vect[3] = true;
     }
     return vect;
 }
@@ -48,10 +45,6 @@ void CustomItem::setCheckBoxC(QString title) {
     ui->checkBox_C->setText(title);
 }
 
-void CustomItem::setCheckBoxD(QString title) {
-    ui->checkBox_D->setText(title);
-}
-
 void CustomItem::on_checkBox_A_stateChanged(int arg1)
 {
     qDebug()<< "seriaNumber = " << this->mSeriaNumber <<  ((arg1 == Qt::Checked) ? "选中" : "未选中") << "A";
@@ -65,9 +58,4 @@ void CustomItem::on_checkBox_B_stateChanged(int arg1)
 void CustomItem::on_checkBox_C_stateChanged(int arg1)
 {
     qDebug()<< "seriaNumber = " << this->mSeriaNumber <<  ((arg1 == Qt::Checked) ? "选中" : "未选中") << "C";
-}
-
-void CustomItem::on_checkBox_D_stateChanged(int arg1)
-{
-    qDebug()<< "seriaNumber = " << this->mSeriaNumber <<  ((arg1 == Qt::Checked) ? "选中" : "未选中") << "D";
 }

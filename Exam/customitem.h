@@ -25,7 +25,6 @@ public :
     void setCheckBoxA(QString title);
     void setCheckBoxB(QString title);
     void setCheckBoxC(QString title);
-    void setCheckBoxD(QString title);
     // 获取当前编号的结果
     QVector<bool> getResult();
 
@@ -33,7 +32,6 @@ private slots:
     void on_checkBox_A_stateChanged(int arg1);
     void on_checkBox_B_stateChanged(int arg1);
     void on_checkBox_C_stateChanged(int arg1);
-    void on_checkBox_D_stateChanged(int arg1);
 };
 
 #endif // CUSTOMITEM_H
