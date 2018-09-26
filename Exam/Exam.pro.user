@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.7.0, 2018-09-09T15:50:36. -->
+<!-- Written by QtCreator 4.7.0, 2018-09-10T23:40:37. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -306,8 +306,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Exam</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/wsk/Documents/exam/Exam/Exam.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Exam2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/SourceTreeJd/os_china/client_ios/QtExam/Exam/Exam.pro</value>
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseDyldImageSuffix">false</value>
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
