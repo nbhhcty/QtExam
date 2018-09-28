@@ -1,13 +1,12 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-09-09T00:22:54
+# Project created by QtCreator 2018-09-26T20:48:52
 #
 #-------------------------------------------------
 
 QT       += core gui widgets
 QT       += network
-
-TARGET = Exam
+TARGET = untitled
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -25,24 +24,15 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    customitem.cpp \
-    checkingquestionitem.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-    customitem.h \
-    checkingquestionitem.h
+        mainwindow.h
 
 FORMS += \
-        mainwindow.ui \
-    customitem.ui \
-    checkingquestionitem.ui
+        mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-DISTFILES += \
-    ../../../Desktop/农机考试.json
