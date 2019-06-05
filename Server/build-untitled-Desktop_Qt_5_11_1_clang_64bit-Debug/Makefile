@@ -51,10 +51,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../untitled/main.cpp \
-		../untitled/mainwindow.cpp moc_mainwindow.cpp
+		../untitled/mainwindow.cpp \
+		../untitled/examresutcell.cpp moc_mainwindow.cpp \
+		moc_examresutcell.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		examresutcell.o \
+		moc_mainwindow.o \
+		moc_examresutcell.o
 DIST          = /Users/wsk/Qt/5.11.1/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/wsk/Qt/5.11.1/clang_64/mkspecs/qdevice.pri \
 		/Users/wsk/Qt/5.11.1/clang_64/mkspecs/features/device_config.prf \
@@ -243,8 +247,10 @@ DIST          = /Users/wsk/Qt/5.11.1/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/wsk/Qt/5.11.1/clang_64/mkspecs/features/exceptions.prf \
 		/Users/wsk/Qt/5.11.1/clang_64/mkspecs/features/yacc.prf \
 		/Users/wsk/Qt/5.11.1/clang_64/mkspecs/features/lex.prf \
-		../untitled/untitled.pro ../untitled/mainwindow.h ../untitled/main.cpp \
-		../untitled/mainwindow.cpp
+		../untitled/untitled.pro ../untitled/mainwindow.h \
+		../untitled/examresutcell.h ../untitled/main.cpp \
+		../untitled/mainwindow.cpp \
+		../untitled/examresutcell.cpp
 QMAKE_TARGET  = untitled
 DESTDIR       = 
 TARGET        = untitled.app/Contents/MacOS/untitled
@@ -258,7 +264,7 @@ EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ACTIVE_ARCHS), $(EXPORT_ACTIVE_
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_examresutcell.h $(OBJECTS)  
 	@test -d untitled.app/Contents/MacOS/ || mkdir -p untitled.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -679,9 +685,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/wsk/Qt/5.11.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../untitled/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../untitled/main.cpp ../untitled/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../untitled/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../untitled/mainwindow.h ../untitled/examresutcell.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../untitled/main.cpp ../untitled/mainwindow.cpp ../untitled/examresutcell.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../untitled/mainwindow.ui ../untitled/examresutcell.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -713,9 +719,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Users/wsk/Qt/5.11.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.11 -Wall -W -dM -E -o moc_predefs.h /Users/wsk/Qt/5.11.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_examresutcell.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_examresutcell.cpp
 moc_mainwindow.cpp: /Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers/QtNetwork \
@@ -759,21 +765,35 @@ moc_mainwindow.cpp: /Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Header
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers/qtcpsocket.h \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers/qudpsocket.h \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers/qtnetworkversion.h \
+		../untitled/examresutcell.h \
+		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../untitled/mainwindow.h \
 		moc_predefs.h \
 		/Users/wsk/Qt/5.11.1/clang_64/bin/moc
 	/Users/wsk/Qt/5.11.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/wsk/Qt/5.11.1/clang_64/mkspecs/macx-clang -I/Users/SourceTreeJd/os_china/client_ios/QtExam/Server/untitled -I/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/wsk/Qt/5.11.1/clang_64/lib/QtGui.framework/Headers -I/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/wsk/Qt/5.11.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/wsk/Qt/5.11.1/clang_64/lib ../untitled/mainwindow.h -o moc_mainwindow.cpp
 
+moc_examresutcell.cpp: /Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../untitled/examresutcell.h \
+		moc_predefs.h \
+		/Users/wsk/Qt/5.11.1/clang_64/bin/moc
+	/Users/wsk/Qt/5.11.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/wsk/Qt/5.11.1/clang_64/mkspecs/macx-clang -I/Users/SourceTreeJd/os_china/client_ios/QtExam/Server/untitled -I/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/wsk/Qt/5.11.1/clang_64/lib/QtGui.framework/Headers -I/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/wsk/Qt/5.11.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/wsk/Qt/5.11.1/clang_64/lib ../untitled/examresutcell.h -o moc_examresutcell.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_examresutcell.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_examresutcell.h
 ui_mainwindow.h: ../untitled/mainwindow.ui \
 		/Users/wsk/Qt/5.11.1/clang_64/bin/uic
 	/Users/wsk/Qt/5.11.1/clang_64/bin/uic ../untitled/mainwindow.ui -o ui_mainwindow.h
+
+ui_examresutcell.h: ../untitled/examresutcell.ui \
+		/Users/wsk/Qt/5.11.1/clang_64/bin/uic
+	/Users/wsk/Qt/5.11.1/clang_64/bin/uic ../untitled/examresutcell.ui -o ui_examresutcell.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -831,6 +851,9 @@ main.o: ../untitled/main.cpp ../untitled/mainwindow.h \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers/qtcpsocket.h \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers/qudpsocket.h \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers/qtnetworkversion.h \
+		../untitled/examresutcell.h \
+		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../untitled/main.cpp
@@ -879,11 +902,23 @@ mainwindow.o: ../untitled/mainwindow.cpp ../untitled/mainwindow.h \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers/qtcpsocket.h \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers/qudpsocket.h \
 		/Users/wsk/Qt/5.11.1/clang_64/lib/QtNetwork.framework/Headers/qtnetworkversion.h \
+		../untitled/examresutcell.h \
+		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../untitled/mainwindow.cpp
 
+examresutcell.o: ../untitled/examresutcell.cpp ../untitled/examresutcell.h \
+		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/wsk/Qt/5.11.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		ui_examresutcell.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o examresutcell.o ../untitled/examresutcell.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_examresutcell.o: moc_examresutcell.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_examresutcell.o moc_examresutcell.cpp
 
 ####### Install
 

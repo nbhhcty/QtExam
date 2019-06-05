@@ -228,6 +228,6 @@ void MainWindow::on_pushButton_clicked()
     qDebug() << "发送给服务器结果：" <<strJson;
 
     this->startConnect();
-    socket->write("2018");
+    socket->write(strJson.toUtf8());
     socket->flush();
 }

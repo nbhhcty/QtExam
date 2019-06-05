@@ -5,6 +5,7 @@
 //#include <QNetworkInterface>
 #include <QMainWindow>
 #include <QtNetwork>
+#include "examresutcell.h"
 
 namespace Ui {
 class MainWindow;

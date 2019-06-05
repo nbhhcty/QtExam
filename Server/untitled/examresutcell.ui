@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ExamResutCell</class>
+ <widget class="QWidget" name="ExamResutCell">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>840</width>
+    <height>43</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QLabel" name="name">
+     <property name="text">
+      <string>张三</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="phone">
+     <property name="text">
+      <string>18310067313</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="id">
+     <property name="text">
+      <string>372324198809276431</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="score">
+     <property name="text">
+      <string>89分</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

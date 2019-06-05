@@ -11,13 +11,12 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QProgressBar>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,9 +25,8 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QPushButton *startButton;
-    QProgressBar *serverProgressBar;
-    QLabel *serverStatusLabel;
+    QVBoxLayout *verticalLayout;
+    QListWidget *listWidget;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -37,23 +35,22 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(400, 300);
+        MainWindow->resize(750, 543);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        startButton = new QPushButton(centralWidget);
-        startButton->setObjectName(QStringLiteral("startButton"));
-        startButton->setGeometry(QRect(130, 170, 114, 32));
-        serverProgressBar = new QProgressBar(centralWidget);
-        serverProgressBar->setObjectName(QStringLiteral("serverProgressBar"));
-        serverProgressBar->setGeometry(QRect(50, 90, 291, 31));
-        serverProgressBar->setValue(0);
-        serverStatusLabel = new QLabel(centralWidget);
-        serverStatusLabel->setObjectName(QStringLiteral("serverStatusLabel"));
-        serverStatusLabel->setGeometry(QRect(50, 30, 281, 21));
+        verticalLayout = new QVBoxLayout(centralWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        listWidget = new QListWidget(centralWidget);
+        listWidget->setObjectName(QStringLiteral("listWidget"));
+
+        verticalLayout->addWidget(listWidget);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 400, 22));
+        menuBar->setGeometry(QRect(0, 0, 750, 22));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -70,8 +67,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        startButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
-        serverStatusLabel->setText(QApplication::translate("MainWindow", "\346\234\215\345\212\241\345\231\250\347\253\257\357\274\201", nullptr));
     } // retranslateUi
 
 };
